@@ -594,7 +594,7 @@ export async function POST(request: NextRequest) {
         fetchPaginatedResults(`site:reddit.com ${topic}`, 3),
 
         // 3. YouTube
-        fetchPaginatedResults(`site:youtube.com ${topic} intitle:2026 intitle:best`, 3),
+        fetchPaginatedResults(`site:youtube.com ${topic}`, 3),
 
         // 4. Own site (if provided) - fetch 20 pages for topical relevance analysis
         userDomain
