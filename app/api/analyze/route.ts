@@ -602,6 +602,9 @@ export async function POST(request: NextRequest) {
           : Promise.resolve([]),
       ]);
 
+    // Log result counts
+    console.log(`Fetched results - Top Articles: ${googleResults.length}, Reddit: ${redditResults.length}, YouTube: ${youtubeResults.length}, Own Site: ${ownSiteResults.length}`);
+
     // Filter out user's domain from top articles
     const filteredGoogleResults = userDomain
       ? googleResults.filter((result: any) => !result.link?.includes(userDomain))

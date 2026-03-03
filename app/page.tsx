@@ -617,7 +617,7 @@ export default function Home() {
                             </tr>
                           </thead>
                           <tbody className="bg-white divide-y divide-gray-200">
-                            {ecosystemData.detailedResults.map((result, index) => (
+                            {ecosystemData.detailedResults.slice(0, 10).map((result, index) => (
                               <tr key={index} className="hover:bg-gray-50">
                                 <td className="px-4 py-3">
                                   <a
