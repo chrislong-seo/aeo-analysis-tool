@@ -459,7 +459,7 @@ async function analyzeMentions(
   browser: Browser
 ): Promise<MentionData> {
   // Analyze each individual result by fetching full content
-  const detailedResultsPromises = results.slice(0, 50).map(async (result) => {
+  const detailedResultsPromises = results.slice(0, 30).map(async (result) => {
     const url = result.link || '';
 
     // Fetch full article content using Playwright
@@ -588,13 +588,13 @@ export async function POST(request: NextRequest) {
     const [googleResults, redditResults, youtubeResults, ownSiteResults] =
       await Promise.all([
         // 1. Top ranking articles (Google search) - targeting "best of" listicles for current year
-        fetchPaginatedResults(`${topic} intitle:2026 intitle:best`, 5),
+        fetchPaginatedResults(`${topic} intitle:2026 intitle:best`, 3),
 
         // 2. Reddit
-        fetchPaginatedResults(`site:reddit.com ${topic}`, 5),
+        fetchPaginatedResults(`site:reddit.com ${topic}`, 3),
 
         // 3. YouTube
-        fetchPaginatedResults(`site:youtube.com ${topic} intitle:2026 intitle:best`, 5),
+        fetchPaginatedResults(`site:youtube.com ${topic} intitle:2026 intitle:best`, 3),
 
         // 4. Own site (if provided) - fetch 20 pages for topical relevance analysis
         userDomain
